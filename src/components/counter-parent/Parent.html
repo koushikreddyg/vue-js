@@ -1,0 +1,22 @@
+
+  <div id="Parent">
+    <h1>Input value is {{inputValue}}</h1>
+    <h1>Total count is: {{this.$store.state.count}}</h1>
+    <div v-for="post in data" v-bind:key="post.name">
+      <h1 class="header">{{post.name}}</h1>
+      <h2>{{post.age}}</h2>
+    </div>
+    <div v-if="!!apiResponse.length">
+      <div v-for="response in apiResponse" v-bind:key="response.id">
+        <h1>{{response.title}}</h1>
+      </div>
+    </div>
+    <div v-else-if="!apiResponse.length">
+      <h1>data not found</h1>
+    </div>
+    <div :style="{color: color}">{{renderName()}}</div>
+    <Child v-bind:count="200" @counterUp="onCountChange"/>
+    <Child v-bind:count="100" @counterUp="onCountChange"/>
+    <input v-bind:value="inputValue" @input="onInputChange">
+    <button @click="navigate">navigate to home</button>
+  </div>
